@@ -1,0 +1,62 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+
+
+ENTITY BCD IS 
+PORT(
+    e : IN signed(6 downto 0);
+    h1,h2 : OUT std_logic_vector(0 to 6));
+END  BCD; 
+
+
+ARCHITECTURE ARCHI OF BCD IS 
+signal s1:  std_logic_vector(0 to 6);
+signal s2:  std_logic_vector(0 to 6);
+variable : eint;
+variable : d;
+variable : r;
+  BEGIN 
+  eint <= to_integer(e);
+  d    <= eint / 10;
+  r    <= eint rem 10;
+  PROCESS(r,d)
+   BEGIN
+	case(r) is 
+when 0 => s1 <= "0000001";
+when 1 => s1 <= "1001111";
+when 2 => s1 <= "0010010";
+when 3 => s1 <= "0000110";
+when 4 => s1 <= "1001100";
+when 5 => s1 <= "0100100";
+when 6 => s1 <= "0100000";
+when 7 => s1 <= "0001111";
+when 8 => s1 <= "0000000";
+when 9 => s1 <= "0000100";
+when others => s1 <= "1111111";
+   end case; 
+	case(d
+	
+	
+	
+	
+	
+	
+	
+	) is 
+when 0 => s2 <= "0000001";
+when 1 => s2 <= "1001111";
+when 2 => s2 <= "0010010";
+when 3 => s2 <= "0000110";
+when 4 => s2 <= "1001100";
+when 5 => s2 <= "0100100";
+when 6 => s2 <= "0100000";
+when 7 => s2 <= "0001111";
+when 8 => s2 <= "0000000";
+when 9 => s2 <= "0000100";
+when others => s2 <= "1111111";
+   end case; 
+  END PROCESS;
+  
+
+  END ARCHI;

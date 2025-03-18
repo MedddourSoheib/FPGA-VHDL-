@@ -1,0 +1,22 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+
+ENTITY comp is
+PORT(
+e: IN std_logic_vector(3 downto 0);
+s: out std_logic);
+end comp;
+
+
+architecture archi of comp is
+begin
+process(e)
+begin
+if unsigned(e) >= 2 and unsigned(e) <= 10 then   unsigned(s) = 1;
+else unsigned(s) = 0;
+
+end if;
+end process;
+end archi;

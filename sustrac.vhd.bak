@@ -1,0 +1,38 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+
+
+ENTITY sustrac IS 
+PORT(
+     e,A,B: IN std_logic;
+     E,S:  OUT std_logic	  );
+END sustrac; 
+
+
+ARCHITECTURE ARCHI OF sustrac IS 
+signal sig: std_logic_vector(2 downto 0);
+signal res: std_logic_vector(1 downto 0);
+  BEGIN 
+sig <= e & A & B;
+  PROCESS(sig)
+   BEGIN
+	 
+CASE sig  IS
+  WHEN "000" => res <= "00";
+  WHEN "001" => res <= "01";
+  WHEN "010" => res <= "11";
+  WHEN "011" => res <= "00";
+  WHEN "100" => res <= "11";
+  WHEN "101" => res <= "00";
+  WHEN "110" => res <= "10";
+  WHEN "111" => res <= "11";
+
+  WHEN OTHERS => res <= "00";
+END CASE;
+  END PROCESS;
+ res(0) <= S;
+ res(1) <= E;
+  
+
+  END ARCHI;
